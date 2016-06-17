@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { fetchPosts } from '../actions/index';
+import { fetchPosts, homePageTitle } from '../actions/index';
+//materail-ui
+
 class PostsIndex extends Component {
   componentWillMount() {
+    this.props.homePageTitle();
     //擷取文章資料，發送fetchPost action
     this.props.fetchPosts()
       .then(()=>{
@@ -26,8 +29,7 @@ class PostsIndex extends Component {
     return(
       <div>
         <div className="text-xs-right">
-          <Link to="posts/new" className="btn btn-primary">New Post</Link>
-          <h3>List of blog post</h3>
+          <Link to="posts/new" className="btn btn-info">New Post</Link>
         </div>
         <ul className="list-group">{postsList}</ul>
       </div>
@@ -36,6 +38,9 @@ class PostsIndex extends Component {
   }
 }
 function mapStateToProps(state){ //存取rootReducer回傳的state
-  return { posts:state.posts.all };
+  return {
+    posts:state.posts.all,
+    title:state.posts.title
+   };
 }
-export default connect( mapStateToProps, { fetchPosts } )(PostsIndex);
+export default connect( mapStateToProps, { fetchPosts,homePageTitle } )(PostsIndex);

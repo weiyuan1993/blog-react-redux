@@ -1,8 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
 import { Link } from 'react-router';
-import { createPost } from '../actions/index';
+import { createPost, createPageTitle } from '../actions/index';
 class PostsNew extends Component {
+  componentWillMount(){
+    this.props.createPageTitle();
+  }
   onSubmit(props){
     this.props.createPost(props)
       .then(()=>{
@@ -13,7 +16,6 @@ class PostsNew extends Component {
     const { fields: { title, categories, content },handleSubmit }=this.props;
     return (
       <form onSubmit={this.props.handleSubmit(this.onSubmit.bind(this))}>
-        <h3>Create A New Post</h3>
         <div className="form-group">
           <label>Title</label>
           <input type="text" className="form-control" {...title} />
@@ -35,7 +37,7 @@ class PostsNew extends Component {
             {content.touched ? content.error:''}
           </div>
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-success" style={{marginRight:"10px"}}>Submit</button>
         <Link to="/" className="btn btn-danger">Cancel</Link>
       </form>
     );
@@ -61,4 +63,4 @@ export default reduxForm({
   form: 'PostsNewForm',
   fields: ['title','categories', 'content'],
   validate
-},null,{ createPost })(PostsNew);
+},null,{ createPost, createPageTitle })(PostsNew);

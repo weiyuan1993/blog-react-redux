@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { fetchPost, deletePost } from '../actions/index';
+import { fetchPost, deletePost,showPageTitle } from '../actions/index';
 
 class PostsShow extends Component {
   constructor(props){
@@ -9,7 +9,10 @@ class PostsShow extends Component {
     this.state={loadingText:'Loading...',deleteText:''};
   }
   componentWillMount(){
-    this.props.fetchPost(this.props.params.id);//解析react-router傳來的URL參數
+    this.props.fetchPost(this.props.params.id)//解析react-router傳來的URL參數
+      .then(()=>{
+        this.props.showPageTitle(this.props.post.title);//發送action，更改title
+      })
   }
   onDeleteClick(){
     this.props.deletePost(this.props.params.id)
@@ -20,7 +23,6 @@ class PostsShow extends Component {
   }
   render(){
     const { post } = this.props; //簡化語法，取代繁瑣的this.props.post
-    console.log(post);
     //載入中的狀態
     if(!post||post.id!=this.props.params.id){
       return (
@@ -59,4 +61,4 @@ PostsShow.contextTypes =  {
     router: PropTypes.object
 };
 //利用connect綁定action宣告的fetchPost方法
-export default connect(mapStateToProps, {fetchPost,deletePost})(PostsShow);
+export default connect(mapStateToProps, {fetchPost,deletePost,showPageTitle})(PostsShow);

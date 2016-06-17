@@ -3,6 +3,8 @@ import axios from 'axios';
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
 const API_KEY = '?key=weiyuan1993';
 
+//action creator為一個function，目的為回傳一個action物件
+
 //抓取所有POST
 export function fetchPosts() {
   const request = axios.get(`${ROOT_URL}/posts${API_KEY}`);
@@ -33,5 +35,24 @@ export function deletePost(id){
   return {
     type:'DELETE_POST',
     payload:request
+  }
+}
+export function homePageTitle() {
+  return {
+    type:'HOME_PAGE',
+    payload:'List of Blog Post'
+  }
+}
+export function createPageTitle(){
+  return {
+    type:'CREATE_PAGE',
+    payload:'New Article'
+  }
+}
+export function showPageTitle(title){
+  console.log(title);
+  return {
+    type:"SHOW_PAGE",
+    payload:title
   }
 }
