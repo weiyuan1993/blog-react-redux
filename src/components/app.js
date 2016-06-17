@@ -5,8 +5,10 @@ import { Link } from 'react-router';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import Album from 'material-ui/svg-icons/av/album';
+import NavigateBefore from 'material-ui/svg-icons/image/navigate-before';
 import FlatButton from 'material-ui/FlatButton';
-
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 const styles = {
   title: {
     cursor: 'pointer',
@@ -14,7 +16,9 @@ const styles = {
 };
 
 class App extends Component {
-
+  historyBack(){
+    history.back();
+  }
   render() {
     if(this.props.title=='List of Blog Post'){
       return (
@@ -32,7 +36,7 @@ class App extends Component {
         <div>
         <AppBar
         title={<span style={styles.title}>{this.props.title}</span>}
-        iconElementLeft={<IconButton><Album /></IconButton>}
+        iconElementLeft={<IconButton onTouchTap={()=>{this.historyBack()}}><NavigateBefore /></IconButton>}
         />
         {this.props.children}
         </div>

@@ -27,7 +27,6 @@ class PostsShow extends Component {
     if(!post||post.id!=this.props.params.id){
       return (
         <div>
-          <Link to="/" className="btn btn-primary">Back</Link>
           <button onClick={this.onDeleteClick.bind(this)} className="btn btn-danger pull-xs-right">DELETE</button>
           <div className="list-group-item">
             {this.state.loadingText}
@@ -38,7 +37,6 @@ class PostsShow extends Component {
     }else{
       return(
         <div>
-          <Link to="/" className="btn btn-primary">Back</Link>
           {this.state.deleteText}
           <button onClick={this.onDeleteClick.bind(this)} className="btn btn-danger pull-xs-right">DELETE</button>
           <div className="list-group-item">
