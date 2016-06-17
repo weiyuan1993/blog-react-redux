@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { fetchPost, deletePost,showPageTitle } from '../actions/index';
-
+import marked from 'marked';
 class PostsShow extends Component {
   constructor(props){
     super(props);
@@ -44,7 +44,9 @@ class PostsShow extends Component {
           <div className="list-group-item">
             <h3>Title:{post.title}</h3>
             <h6>Categories:{post.categories}</h6>
-            <p>Content:{post.content}</p>
+            <p>Content:</p>
+            <br/>
+            <span dangerouslySetInnerHTML={{__html: marked(post.content)}}></span>
           </div>
         </div>
       );

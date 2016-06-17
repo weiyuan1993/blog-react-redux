@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'; //合併多個reducer用
-import PostsReducer from './reducer_posts';
+import titleReducer from './reducer_title';
+import postsReducer from './reducer_posts';
 import { reducer as formReducer } from 'redux-form';
 const rootReducer = combineReducers({
-  posts:PostsReducer,
+  title:titleReducer,
+  posts:postsReducer,
   form:formReducer
 });
 

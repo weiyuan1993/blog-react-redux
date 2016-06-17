@@ -28,9 +28,6 @@ class PostsIndex extends Component {
     })
     return(
       <div>
-        <div className="text-xs-right">
-          <Link to="posts/new" className="btn btn-info">New Post</Link>
-        </div>
         <ul className="list-group">{postsList}</ul>
       </div>
 
@@ -39,8 +36,7 @@ class PostsIndex extends Component {
 }
 function mapStateToProps(state){ //存取rootReducer回傳的state
   return {
-    posts:state.posts.all,
-    title:state.posts.title
+    posts:state.posts.all
    };
 }
 export default connect( mapStateToProps, { fetchPosts,homePageTitle } )(PostsIndex);

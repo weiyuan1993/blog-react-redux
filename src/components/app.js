@@ -42,7 +42,7 @@ class App extends Component {
 }
 function mapStateToProps(state) {
   return{
-    title:state.posts.title
+    title:state.title.title
   }
 }
 export default connect(mapStateToProps)(App);

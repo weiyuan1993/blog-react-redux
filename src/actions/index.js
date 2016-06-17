@@ -50,7 +50,6 @@ export function createPageTitle(){
   }
 }
 export function showPageTitle(title){
-  console.log(title);
   return {
     type:"SHOW_PAGE",
     payload:title
