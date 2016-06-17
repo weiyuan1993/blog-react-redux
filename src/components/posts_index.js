@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import { fetchPosts } from '../actions/index';
 class PostsIndex extends Component {
   componentWillMount() {
-    //第一次拉文章資料
+    //擷取文章資料，發送fetchPost action
     this.props.fetchPosts()
       .then(()=>{
           console.log(this.props.posts);
