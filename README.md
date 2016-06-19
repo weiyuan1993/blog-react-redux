@@ -8,7 +8,7 @@ In this blog demo, I use following skill to build it.
 * [Redux](https://github.com/reactjs/redux)
 * [React-Redux](https://github.com/reactjs/react-redux)
 * [axios](https://github.com/mzabriskie/axios)
-###Getting Started###
+###Getting Started
 ```
 	> npm install
 	> npm start

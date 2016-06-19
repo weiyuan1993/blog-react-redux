@@ -43,7 +43,6 @@ class PostsShow extends Component {
             <h3>Title:{post.title}</h3>
             <h6>Categories:{post.categories}</h6>
             <p>Content:</p>
-            <br/>
             <span dangerouslySetInnerHTML={{__html: marked(post.content)}}></span>
           </div>
         </div>
