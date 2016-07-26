@@ -15,9 +15,6 @@ const Page2 = () => {
 const Page3 = () => {
   return <div>I'm page Three.</div>
 }
-
-
-
 export default(
   <Route path="/" component={App} >
     <IndexRoute component={PostsIndex} /> {/*IndexRoute用來顯示首頁內容*/}

@@ -1,28 +1,32 @@
+var webpack = require('webpack');
+var path = require('path');
+
 module.exports = {
   entry: [
-    './src/index.js'
+    './src/index'
   ],
+  module: {
+    loaders: [{
+      test: /\.js?$/,
+      loader: 'babel',
+      exclude: /node_modules/
+    }]
+  },
+  resolve: {
+    extensions: ['', '.js']
+  },
   output: {
-    path: __dirname,
+    path: path.join(__dirname, '/dist'),
     publicPath: '/',
     filename: 'bundle.js'
   },
   devServer: {
-    color:              true,
-    historyApiFallback: true,
-    contentBase:        './',
-    inline:             true,
-    progress:           true,
-    port:               3000
+    contentBase: './dist',
+    hot: true
   },
-  module: {
-    loaders: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        presets: ['es2015', 'react']
-      }
-    }]
-  }
+  plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ]
 };
